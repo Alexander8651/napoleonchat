@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/favoritesItem"
+        android:title="Favorites"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/updateItem"
+        android:icon="@drawable/ic_baseline_update_24"
+        android:title="Item"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/deleteAll"
+        android:icon="@drawable/ic_baseline_delete_24"
+        android:title="deleteAll"
+        app:showAsAction="ifRoom" />
+</menu>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/maingrapph"
+    android:label="POst"
+    app:startDestination="@id/allPostFragment">
+
+    <fragment
+        android:id="@+id/allPostFragment"
+        android:name="com.napoleon.ui.fragments.AllPostFragment"
+        android:label="Post"
+        tools:layout="@layout/fragment_all_post">
+        <action
+            android:id="@+id/action_allPostFragment_to_detailsPostFragment"
+            app:destination="@id/detailsPostFragment"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_right"
+            app:popExitAnim="@anim/slide_out_rigth" />
+        <action
+            android:id="@+id/action_allPostFragment_to_favoritesFragment"
+            app:destination="@id/favoritesFragment"
+            app:enterAnim="@anim/slide_in_top"
+            app:exitAnim="@anim/slide_out_button"
+            app:popEnterAnim="@anim/slide_in_botton"
+            app:popExitAnim="@anim/slide_out_button" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailsPostFragment"
+        android:name="com.napoleon.ui.fragments.DetailsPostFragment"
+        android:label="Details Post"
+        tools:layout="@layout/fragment_details_post" />
+    <fragment
+        android:id="@+id/favoritesFragment"
+        android:name="com.napoleon.ui.fragments.FavoritesFragment"
+        android:label="Favorites"
+        tools:layout="@layout/fragment_favorites" />
+</navigation>
