@@ -10,15 +10,63 @@
             type="com.napoleon.viewmodel.ViewModelAllPostFragment" />
     </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvAllPost"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipToPadding="false"
-        android:padding="6dp"
-        app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
-        app:spanCount="2"
-        tools:listitem="@layout/itempost"/>
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
+      <androidx.recyclerview.widget.RecyclerView
+          android:id="@+id/rvAllPost"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:clipToPadding="false"
+          android:padding="6dp"
+          app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+          app:spanCount="2"
+          tools:listitem="@layout/itempost"/>
+
+      <RelativeLayout
+          android:id="@+id/status_image"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          app:ApiStatus = "@{viewmodel.status}">
+          <View
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorPrimary"
+              android:alpha="0.4"/>
+          <com.airbnb.lottie.LottieAnimationView
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              app:lottie_autoPlay="true"
+              app:lottie_rawRes="@raw/swords"
+              app:lottie_loop="true"
+              app:lottie_speed="2.5"/>
+      </RelativeLayout>
+
+      <RelativeLayout
+          android:id="@+id/status_deleting"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:visibility="invisible">
+          <View
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorPrimary"
+              android:alpha="0.4"/>
+          <com.airbnb.lottie.LottieAnimationView
+              android:id="@+id/deleting"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              app:lottie_autoPlay="true"
+              app:lottie_rawRes="@raw/garbage"
+              app:lottie_speed="2.5"/>
+      </RelativeLayout>
+
+
+
+
+
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 

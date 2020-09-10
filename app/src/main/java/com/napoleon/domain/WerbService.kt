@@ -6,6 +6,7 @@ import retrofit2.http.GET
 
 interface WebService {
 
+    // get petition from api
     @GET("posts")
     fun getAllPost():Deferred<List<PostApi>>
 }

@@ -5,7 +5,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import kotlinx.android.parcel.Parcelize
 
-
+//Entity of database
 @Entity(tableName = "post", primaryKeys = arrayOf("userId", "id"))
 @Parcelize
 data class PostSqlite(
@@ -26,6 +26,7 @@ data class PostSqlite(
     val body: String = ""
 ) : Parcelable
 
+// class to parcer the data responde from api
 @Parcelize
 data class PostApi(
     val userId: Int = 0,

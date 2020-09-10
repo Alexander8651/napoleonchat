@@ -23,21 +23,26 @@ import kotlinx.coroutines.launch
 
 class DetailsPostFragment : Fragment() {
 
+    //init viewmodel of details
     val viewmodel by viewModels<ViewModelDetailFragment> {VMFactory(RepositoryImpl(Datasource(
         AppDatabase.getDatabae(requireContext().applicationContext)!!)))  }
 
+    //declarer postsqlite and databinding
     private lateinit var post:PostSqlite
-
     private lateinit var binding: FragmentDetailsPostBinding
 
+    //jon of coroutine
     val job = Job()
-
+    // scope of coroutine with background dispatcher
     val uiScope = CoroutineScope(job + Dispatchers.IO)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        //Get the post send from recyclerview
         requireArguments().apply {
+
+            //init the post with the data obtein
             post = getParcelable("post")!!
         }
 
@@ -55,34 +60,47 @@ class DetailsPostFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //init binding
         binding = FragmentDetailsPostBinding.bind(view)
 
+        //set bind postdetail to bind the view with data
         binding.postdetail = post
 
+        ////ini the functions
         setStatusPostReaded(post)
-
         setStatusPostFavorites(post)
 
 
 
     }
 
+    //set the status of post when the favorite boton is clicked
     private fun setStatusPostFavorites(post: PostSqlite) {
         binding.saveinFavorites.setOnClickListener {
+
+            //ini new post with new status
             val postDetailtoFavorites = PostSqlite("favorites", post.userId, post.id, post.title, post.body)
 
+            //init the corroutine to set the status
             uiScope.launch {
+
+                //init function to set status
                 viewmodel.setStatusPost(postDetailtoFavorites)
             }
+
+            //displaced when the pos has benn added to favorites
             Toast.makeText(requireContext(), "Add to Favorites", Toast.LENGTH_SHORT).show()
             Log.d("favoritos", postDetailtoFavorites.toString())
         }
     }
 
+    //set the estatus to readed
     fun setStatusPostReaded(post: PostSqlite){
 
+        //ini new post with new status
         val postDetails = PostSqlite("readed", post.userId, post.id, post.title, post.body)
 
+        //init the corroutine to set the status, if post is not favorite status
         uiScope.launch {
 
             if (post.statePost != "favorites"){

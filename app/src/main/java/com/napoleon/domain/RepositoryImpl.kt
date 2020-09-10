@@ -18,4 +18,16 @@ class RepositoryImpl(private val datasource: Datasource):Repository {
         datasource.setStatusPost(post)
     }
 
+    override suspend fun getFavorites(): List<PostSqlite> {
+        return datasource.getFavorites()
+    }
+
+    override suspend fun deletePost(post: PostSqlite) {
+        datasource.deletePost(post)
+    }
+
+    override suspend fun deleteAllPost(postList: List<PostSqlite>) {
+        datasource.deleteAllPost(postList)
+    }
+
 }
